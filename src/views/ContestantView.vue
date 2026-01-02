@@ -21,9 +21,6 @@
         <div class="main-chart">
            <ProgressChart :history="contestant.history" />
         </div>
-        <div class="side-chart">
-           <BreakdownChart :dogPoints="contestant.totalDogs" :bonusPoints="contestant.bonusPoints" />
-        </div>
       </div>
 
       <div class="stats-grid">
@@ -69,7 +66,6 @@ import { store } from '../store';
 import { fetchData } from '../services/dataService';
 import ComicStatBubble from '../components/ComicStatBubble.vue';
 import ProgressChart from '../components/ProgressChart.vue';
-import BreakdownChart from '../components/BreakdownChart.vue';
 import { format } from 'date-fns';
 
 const route = useRoute();
@@ -152,13 +148,10 @@ const handleImageError = (e) => {
 }
 
 .charts-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
   margin-top: 30px;
 }
 
-.main-chart, .side-chart {
+.main-chart {
   min-width: 0; /* Critical for preventing grid blowout with charts */
 }
 
@@ -167,12 +160,6 @@ const handleImageError = (e) => {
   flex-wrap: wrap;
   justify-content: center;
   margin: 30px 0;
-}
-
-@media (max-width: 900px) {
-  .charts-row {
-    grid-template-columns: 1fr;
-  }
 }
 
 .history-log {
