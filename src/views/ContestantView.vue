@@ -17,14 +17,21 @@
         </div>
       </div>
 
-      <div class="stats-grid">
-        <ComicStatBubble icon="🗼" :text="contestant.eiffelSentence" />
-        <ComicStatBubble icon="🍕" :text="contestant.pizzaSentence" />
-        <ComicStatBubble icon="🥷" :text="contestant.ninjaSentence" />
-        <ComicStatBubble icon="🐢" :text="contestant.manholeSentence" />
+      <div class="charts-row">
+        <div class="main-chart">
+           <ProgressChart :history="contestant.history" />
+        </div>
+        <div class="side-chart">
+           <BreakdownChart :dogPoints="contestant.totalDogs" :bonusPoints="contestant.bonusPoints" />
+        </div>
       </div>
 
-      <ProgressChart :history="contestant.history" />
+      <div class="stats-grid">
+        <ComicStatBubble :text="contestant.eiffelSentence" />
+        <ComicStatBubble :text="contestant.pizzaSentence" />
+        <ComicStatBubble :text="contestant.ninjaSentence" />
+        <ComicStatBubble :text="contestant.manholeSentence" />
+      </div>
 
       <div class="history-log retro-box">
         <h3>Eating History</h3>
@@ -62,6 +69,7 @@ import { store } from '../store';
 import { fetchData } from '../services/dataService';
 import ComicStatBubble from '../components/ComicStatBubble.vue';
 import ProgressChart from '../components/ProgressChart.vue';
+import BreakdownChart from '../components/BreakdownChart.vue';
 import { format } from 'date-fns';
 
 const route = useRoute();
@@ -143,11 +151,24 @@ const handleImageError = (e) => {
   text-shadow: 2px 2px 0 var(--color-white);
 }
 
+.charts-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
 .stats-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 30px 0;
+}
+
+@media (max-width: 900px) {
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .history-log {

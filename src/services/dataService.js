@@ -98,15 +98,15 @@ export async function fetchData() {
 
       // Weight of a Large Pizza ~ 2 lbs (20 dogs)
       const pizzaWeight = (c.totalDogs * 0.1) / 2;
-      c.pizzaSentence = `That's roughly equivalent to the weight of ${pizzaWeight.toFixed(1)} large pepperonis! 🍕`;
+      c.pizzaSentence = `That's roughly equivalent to the weight of ${pizzaWeight.toFixed(1)} large pepperonis!`;
 
       // Ninja Power (Arbitrary: 1 dog powers a ninja for 10 minutes)
       const ninjaMinutes = c.totalDogs * 10;
-      c.ninjaSentence = `Enough fuel to power a ninja fighting foot soldiers for ${ninjaMinutes} minutes! 🥷`;
+      c.ninjaSentence = `Enough fuel to power a ninja fighting foot soldiers for ${ninjaMinutes} minutes!`;
 
       // Manhole Covers (Diameter ~ 24 inches = 4 dogs)
       const manholeCovers = (c.totalDogs / 4).toFixed(1);
-      c.manholeSentence = `Laid end-to-end, they'd span across ${manholeCovers} sewer manhole covers! 🐢`;
+      c.manholeSentence = `Laid end-to-end, they'd span across ${manholeCovers} sewer manhole covers!`;
 
       return c;
     });

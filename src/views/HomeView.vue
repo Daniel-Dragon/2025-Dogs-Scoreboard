@@ -2,7 +2,15 @@
   <div class="home-view">
     <header class="main-header">
       <h1>Dawgz with Dogz for Dogs 🌭</h1>
-      <p class="subtitle">The Ultimate Hot Dog Eating Contest for Charity!</p>
+      <div class="legend-box">
+        <h3>📜 The Legend of the Golden Glizzy</h3>
+        <p>
+          Deep in the sewers of New York City, a secret tournament is held.
+          Warriors from all walks of life gather to prove their might, not with swords or nunchucks, but with appetite!
+          Who will consume the most dogs? Who will claim the ultimate title?
+          Witness the carnage. Respect the hunger. Cowabunga!
+        </p>
+      </div>
     </header>
 
     <div v-if="store.loading" class="loading-state">
@@ -64,10 +72,29 @@ onMounted(async () => {
   margin: 0;
 }
 
-.subtitle {
-  font-family: 'Comic Sans MS', cursive;
-  font-size: 1.2rem;
-  font-weight: bold;
+.legend-box {
+  background-color: var(--color-comic-white);
+  border: 3px solid var(--color-comic-black);
+  padding: 15px;
+  margin-top: 20px;
+  transform: rotate(1deg);
+  box-shadow: 5px 5px 0 var(--color-comic-black);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.legend-box h3 {
+  color: var(--color-comic-purple);
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.legend-box p {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 0;
 }
 
 .content-wrapper {

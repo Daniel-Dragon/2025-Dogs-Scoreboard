@@ -2,7 +2,6 @@
   <div class="stats-bubble">
     <div class="bubble-tail"></div>
     <div class="stat-content">
-      <div class="icon-wrapper">{{ icon }}</div>
       <p class="stat-text">{{ text }}</p>
     </div>
   </div>
@@ -10,10 +9,6 @@
 
 <script setup>
 defineProps({
-  icon: {
-    type: String,
-    required: true
-  },
   text: {
     type: String,
     required: true
@@ -39,13 +34,7 @@ defineProps({
 .stats-bubble:hover {
   transform: scale(1.05) rotate(1deg);
   z-index: 10;
-  border-color: var(--color-comic-red);
-}
-
-.icon-wrapper {
-  font-size: 2.5rem;
-  margin-right: 15px;
-  filter: drop-shadow(2px 2px 0 var(--color-comic-black));
+  /* Removed border color change as requested */
 }
 
 .stat-text {
