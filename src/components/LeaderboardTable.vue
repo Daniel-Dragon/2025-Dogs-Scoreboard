@@ -2,31 +2,39 @@
   <div class="leaderboard-container retro-box">
     <h2>🏆 Top Dogs Leaderboard 🏆</h2>
     <div class="table-responsive">
-      <table class="leaderboard-table">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Contestant</th>
-            <th>Total Points</th>
-            <th>Hot Dogs Eaten</th>
+      <table class="leaderboard-table" role="table">
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader">Rank</th>
+            <th role="columnheader">Contestant</th>
+            <th role="columnheader">Total Points</th>
+            <th role="columnheader">Hot Dogs Eaten</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="(contestant, index) in contestants" :key="contestant.name" class="contestant-row" @click="goToProfile(contestant.name)">
-            <td class="rank-cell">
+        <tbody role="rowgroup">
+          <tr v-for="(contestant, index) in contestants" :key="contestant.name" class="contestant-row" @click="goToProfile(contestant.name)" role="row">
+            <td class="rank-cell" role="cell">
+              <span class="mobile-label" aria-hidden="true">Rank:</span>
               <span v-if="index === 0">👑</span>
               <span v-else-if="index === 1">🥈</span>
               <span v-else-if="index === 2">🥉</span>
               <span v-else>#{{ index + 1 }}</span>
             </td>
-            <td class="profile-cell">
+            <td class="profile-cell" role="cell">
+              <span class="mobile-label" aria-hidden="true">Contestant:</span>
               <div class="profile-wrapper">
                 <img :src="contestant.image" :alt="contestant.name" class="profile-thumb" @error="handleImageError">
                 <span class="contestant-name">{{ contestant.name }}</span>
               </div>
             </td>
-            <td class="points-cell">{{ contestant.totalPoints }}</td>
-            <td class="dogs-cell">{{ contestant.totalDogs }} 🌭</td>
+            <td class="points-cell" role="cell">
+              <span class="mobile-label" aria-hidden="true">Total Points:</span>
+              {{ contestant.totalPoints }}
+            </td>
+            <td class="dogs-cell" role="cell">
+              <span class="mobile-label" aria-hidden="true">Hot Dogs:</span>
+              {{ contestant.totalDogs }} 🌭
+            </td>
           </tr>
         </tbody>
       </table>
@@ -128,5 +136,81 @@ td {
 
 .dogs-cell {
   font-size: 1.2rem;
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  /* Force table to not be like tables anymore */
+  .leaderboard-table,
+  .leaderboard-table thead,
+  .leaderboard-table tbody,
+  .leaderboard-table th,
+  .leaderboard-table td,
+  .leaderboard-table tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  .leaderboard-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .leaderboard-table tr {
+    margin-bottom: 2rem;
+    border: 3px solid var(--color-black);
+    box-shadow: 5px 5px 0 var(--color-black);
+    background-color: var(--color-white);
+  }
+
+  .leaderboard-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .leaderboard-table td {
+    /* Behave like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    padding: 15px;
+  }
+
+  .leaderboard-table td:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-label {
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'Bangers', cursive;
+    color: var(--color-purple);
+    font-size: 1.2rem;
+  }
+
+  /* Adjust profile wrapper for mobile flex layout */
+  .profile-wrapper {
+    justify-content: flex-end;
+  }
+
+  /* Stack label and content for profile cell on small screens */
+  .leaderboard-table .profile-cell {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .leaderboard-table .profile-cell .profile-wrapper {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
 </style>
