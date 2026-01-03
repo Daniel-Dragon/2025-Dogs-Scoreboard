@@ -131,8 +131,6 @@ export async function fetchData() {
 
     // Calculate Highlights
     let biggestDrop = { points: -1 };
-    let mostCreative = { points: -1 };
-    let glizzyGladiator = { dogs: -1 };
 
     scoresData.forEach(s => {
       const name = s['Contestant'];
@@ -145,17 +143,57 @@ export async function fetchData() {
       if (totalPoints > biggestDrop.points) {
         biggestDrop = { name, date, points: totalPoints };
       }
-
-      // Most Creative (Bonus Points)
-      if (bonusPoints > mostCreative.points) {
-        mostCreative = { name, date, points: bonusPoints };
-      }
-
-      // Glizzy Gladiator (Dog Points)
-      if (dogPoints > glizzyGladiator.dogs) {
-        glizzyGladiator = { name, date, dogs: dogPoints };
-      }
     });
+
+    // Most Creative (Total Bonus Points)
+    let maxBonus = -1;
+    contestants.forEach(c => {
+        if (c.bonusPoints > maxBonus) maxBonus = c.bonusPoints;
+    });
+
+    const creativeWinners = contestants
+        .filter(c => c.bonusPoints === maxBonus && maxBonus > 0)
+        .map(c => c.name);
+
+    let creativeText = '';
+    if (creativeWinners.length === 0) {
+        creativeText = 'No bonus points awarded yet!';
+    } else if (creativeWinners.length === 1) {
+        creativeText = `${creativeWinners[0]} has earned ${maxBonus} total bonus points!`;
+    } else {
+        const names = [...creativeWinners];
+        if (names.length === 2) {
+            creativeText = `${names[0]} & ${names[1]} are tied for the most bonus points with ${maxBonus}!`;
+        } else {
+            const last = names.pop();
+            creativeText = `${names.join(', ')}, & ${last} are tied for the most bonus points with ${maxBonus}!`;
+        }
+    }
+
+    // Glizzy Gladiator (Total Dog Points)
+    let maxDogs = -1;
+    contestants.forEach(c => {
+        if (c.totalDogs > maxDogs) maxDogs = c.totalDogs;
+    });
+
+    const glizzyWinners = contestants
+        .filter(c => c.totalDogs === maxDogs && maxDogs > 0)
+        .map(c => c.name);
+
+    let glizzyText = '';
+    if (glizzyWinners.length === 0) {
+        glizzyText = 'No dogs eaten yet!';
+    } else if (glizzyWinners.length === 1) {
+        glizzyText = `${glizzyWinners[0]} has consumed a total of ${maxDogs} dogs!`;
+    } else {
+        const names = [...glizzyWinners];
+        if (names.length === 2) {
+            glizzyText = `${names[0]} & ${names[1]} are tied for the most dogs with ${maxDogs} consumed!`;
+        } else {
+            const last = names.pop();
+            glizzyText = `${names.join(', ')}, & ${last} are tied for the most dogs with ${maxDogs} consumed!`;
+        }
+    }
 
     const highlights = [
       {
@@ -165,12 +203,12 @@ export async function fetchData() {
       },
       {
         title: "MOST CREATIVE 🎨",
-        text: `${mostCreative.name} earned ${mostCreative.points} bonus points on ${mostCreative.date} for pure style!`,
+        text: creativeText,
         icon: "✨"
       },
       {
         title: "GLIZZY GLADIATOR 🌭",
-        text: `${glizzyGladiator.name} devoured ${glizzyGladiator.dogs} dogs in one sitting on ${glizzyGladiator.date}!`,
+        text: glizzyText,
         icon: "👑"
       }
     ];
