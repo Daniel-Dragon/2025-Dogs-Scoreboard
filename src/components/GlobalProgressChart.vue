@@ -146,10 +146,10 @@ const chartOptions = {
         borderDash: [5, 5]
       },
       ticks: {
-        font: {
-          family: 'Comic Sans MS'
-        },
-        color: '#000'
+          font: {
+            family: 'Bangers',
+          },
+          color: '#000'
       }
     },
     y: {
@@ -158,10 +158,10 @@ const chartOptions = {
         borderDash: [5, 5]
       },
       ticks: {
-        font: {
-          family: 'Comic Sans MS'
-        },
-        color: '#000'
+          font: {
+            family: 'Bangers',
+          },
+          color: '#000'
       }
     }
   }

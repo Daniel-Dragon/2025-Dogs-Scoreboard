@@ -86,7 +86,7 @@ const chartOptions = {
     },
     title: {
       display: true,
-      text: 'POINTS PROGRESSION 📈',
+      text: 'Points Progression',
       font: {
         family: 'Bangers',
         size: 24
@@ -101,10 +101,10 @@ const chartOptions = {
         borderDash: [5, 5]
       },
       ticks: {
-        font: {
-          family: 'Comic Sans MS'
-        },
-        color: '#000'
+          font: {
+            family: 'Bangers',
+          },
+          color: '#000'
       }
     },
     y: {
@@ -113,10 +113,10 @@ const chartOptions = {
         borderDash: [5, 5]
       },
       ticks: {
-        font: {
-          family: 'Comic Sans MS'
-        },
-        color: '#000'
+          font: {
+            family: 'Bangers',
+          },
+          color: '#000'
       }
     }
   }

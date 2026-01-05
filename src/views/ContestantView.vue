@@ -31,7 +31,7 @@
       </div>
 
       <div class="history-log retro-box">
-        <h3>Eating History</h3>
+        <h2>Eating History</h2>
         <table class="history-table">
           <thead>
             <tr>
