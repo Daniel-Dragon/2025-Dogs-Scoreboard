@@ -126,6 +126,7 @@ const handleImageError = (e) => {
   border: 5px solid var(--color-white);
   box-shadow: 5px 5px 0 var(--color-black);
   object-fit: cover;
+  object-position: top;
 }
 
 .profile-info h1 {

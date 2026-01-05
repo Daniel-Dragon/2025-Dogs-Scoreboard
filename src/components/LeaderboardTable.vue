@@ -121,6 +121,7 @@ td {
   border-radius: 50%;
   border: 3px solid var(--color-neon-green);
   object-fit: cover;
+  object-position: top;
 }
 
 .contestant-name {
