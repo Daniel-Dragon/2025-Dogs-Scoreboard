@@ -46,7 +46,7 @@ export async function fetchData() {
     scoresData.forEach(s => {
       const name = s['Contestant'];
       const dogPoints = parseFloat(s['Dog Points']) || 0;
-      const bonusPoints = parseFloat(s['Bonus Points']) || 0;
+      const bonusPoints = parseFloat(s['Creative Points']) || 0;
       const totalPoints = parseFloat(s['Total Points']) || (dogPoints + bonusPoints);
       const date = s['Date'];
 
@@ -136,7 +136,7 @@ export async function fetchData() {
       const name = s['Contestant'];
       const date = s['Date'];
       const dogPoints = parseFloat(s['Dog Points']) || 0;
-      const bonusPoints = parseFloat(s['Bonus Points']) || 0;
+      const bonusPoints = parseFloat(s['Creative Points']) || 0;
       const totalPoints = parseFloat(s['Total Points']) || (dogPoints + bonusPoints);
 
       // Biggest Score Drop (Total Points)

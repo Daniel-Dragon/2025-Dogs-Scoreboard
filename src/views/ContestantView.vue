@@ -37,7 +37,7 @@
             <tr>
               <th>Date</th>
               <th>Dog Points</th>
-              <th>Bonus Points</th>
+              <th>Creative Points</th>
               <th>Total</th>
             </tr>
           </thead>
