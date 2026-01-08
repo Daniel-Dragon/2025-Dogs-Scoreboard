@@ -10,6 +10,15 @@
   --color-comic-white: #fff;
   --color-sewer-grey: #607d8b;
   --bg-pattern: radial-gradient(circle, var(--color-tmnt-dark-green) 1px, transparent 1px);
+
+  /* Aliases for compatibility/consistency with legacy/other components */
+  --color-purple: var(--color-comic-purple);
+  --color-neon-yellow: var(--color-comic-yellow);
+  --color-neon-pink: #ff00ff; /* New neon pink for accents */
+  --color-neon-green: #00ff00; /* New neon green */
+  --color-neon-cyan: #00ffff; /* New neon cyan */
+  --color-white: var(--color-comic-white);
+  --color-black: var(--color-comic-black);
 }
 
 body {
