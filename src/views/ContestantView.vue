@@ -85,6 +85,10 @@ onMounted(async () => {
   }
 
   contestant.value = store.getContestantByName(name);
+  if (!contestant.value) {
+    router.push('/');
+    return;
+  }
   loading.value = false;
 });
 

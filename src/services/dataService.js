@@ -61,22 +61,7 @@ export async function fetchData() {
           totalPoints: totalPoints
         });
       } else {
-        // Handle case where contestant appears in scores but not in contestants list
-        // Create a temporary entry or log warning?
-        // For this app, we'll create a basic entry
-         contestantsMap[name] = {
-          name: name,
-          image: `${import.meta.env.BASE_URL}images/placeholder.svg`,
-          totalPoints: totalPoints,
-          totalDogs: dogPoints,
-          creativePoints: creativePoints,
-          history: [{
-             date: date,
-             dogPoints: dogPoints,
-             creativePoints: creativePoints,
-             totalPoints: totalPoints
-          }]
-        };
+        console.warn(`Contestant "${name}" found in scores but not in contestants list. Skipping.`);
       }
     });
 
