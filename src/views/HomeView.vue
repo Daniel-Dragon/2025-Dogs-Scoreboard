@@ -5,7 +5,7 @@
       <img src="/dawgz-dogz-dogs-logo.jpg" alt="Dawgz with Dogz for Dogs" style="width: 100%;" />
     </header>
 
-    <div v-if="store.loading" class="loading-state">
+    <div v-if="store.loading" class="loading-state" role="status" aria-live="polite">
       Fetching Tasty Data...
     </div>
 
