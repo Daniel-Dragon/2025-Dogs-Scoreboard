@@ -24,10 +24,10 @@
           >
             <td class="rank-cell" role="cell">
               <span class="mobile-label" aria-hidden="true">Rank:</span>
-              <span v-if="index === 0">👑</span>
-              <span v-else-if="index === 1">🥈</span>
-              <span v-else-if="index === 2">🥉</span>
-              <span v-else>#{{ index + 1 }}</span>
+              <span v-if="index === 0" aria-label="First Place" role="img">👑</span>
+              <span v-else-if="index === 1" aria-label="Second Place" role="img">🥈</span>
+              <span v-else-if="index === 2" aria-label="Third Place" role="img">🥉</span>
+              <span v-else :aria-label="'Rank ' + (index + 1)">#{{ index + 1 }}</span>
             </td>
             <td class="profile-cell" role="cell">
               <span class="mobile-label" aria-hidden="true">Contestant:</span>
